@@ -9,3 +9,5 @@
 * `React.js`
 * `React tailwind`
 * `React Router`
+* `CustomLink`
+* `React hero icon`
