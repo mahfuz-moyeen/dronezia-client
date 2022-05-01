@@ -10,4 +10,6 @@
 * `React tailwind`
 * `React Router`
 * `CustomLink`
+* `heroicons`
+* `daisyui`
 * `React hero icon`

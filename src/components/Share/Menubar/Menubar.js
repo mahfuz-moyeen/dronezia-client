@@ -39,15 +39,11 @@ const Menubar = () => {
                     </div>
                 </div>
 
-                <div className={`flex-1 justify-between flex-row-reverse lg:overflow-visible lg:flex lg:pb-0 lg:pr-0 lg:h-auto ${open ? 'h-screen pb-20 overflow-auto pr-4' : 'hidden'}`}>
+                <div className={`flex-1 justify-between flex-row-reverse lg:overflow-visible lg:flex lg:pb-0 lg:pr-0 lg:h-auto ${open ? ' h-screen pb-20 overflow-auto pr-4' : 'hidden'}`}>
 
                     <div>
                         <ul className="flex flex-col-reverse space-x-0 lg:space-x-6 lg:flex-row">
-                            <li className="mt-8 mb-8 lg:mt-0 lg:mb-0">
-                                <CustomLink to="/about" className="py-3 px-4 text-center text-gray-600 hover:text-indigo-600">
-                                    About
-                                </CustomLink>
-                            </li>
+                            
 
                             {/* <div className='relative '>
                                 <div className="flex items-center space-x-4">
@@ -113,8 +109,14 @@ const Menubar = () => {
                                     Blogs
                                 </CustomLink>
                             </li>
+                            <li className="mt-8 mb-8 lg:mt-0 lg:mb-0">
+                                <CustomLink to="/about" className="py-3 px-4 text-center text-gray-600 hover:text-indigo-600">
+                                    About
+                                </CustomLink>
+                            </li>
                         </ul>
                     </div>
+                    
                 </div>
             </div>
         </nav>

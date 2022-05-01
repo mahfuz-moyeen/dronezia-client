@@ -7,11 +7,17 @@ import Menubar from './components/Share/Menubar/Menubar';
 import SignIn from './components/pages/Sign/SignIn/SignIn'
 import SignUp from './components/pages/Sign/SignUp/SignUp';
 import UserProfile from './components/Share/UserProfile/UserProfile';
+import NotFound from './components/pages/NotFound/NotFound';
+import Footer from './components/Share/Footer/Footer';
 
 function App() {
   return (
     <div className="App">
+
+      {/* menubar */}
       <Menubar />
+
+      {/* All page  */}
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/home' element={<Home />} />
@@ -20,7 +26,13 @@ function App() {
         <Route path='/sign-in' element={<SignIn />} />
         <Route path='/sign-up' element={<SignUp />} />
         <Route path='/user-profile' element={<UserProfile />} />
+
+
+        <Route path='*' element={<NotFound />} />
       </Routes>
+
+      {/* footer  */}
+      <Footer />
     </div>
   );
 }
