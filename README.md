@@ -3,3 +3,9 @@
 <hr/>
 
 ## Live site : [Dronezia]()
+
+## Use Items 
+
+* `React.js`
+* `React tailwind`
+* `React Router`

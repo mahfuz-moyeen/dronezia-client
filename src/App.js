@@ -1,9 +1,24 @@
+import { Route, Routes } from 'react-router-dom';
 import './App.css';
+import About from './components/pages/About/About';
+import Blogs from './components/pages/Blogs/Blogs';
+import Home from './components/pages/Home/Home';
+import Menubar from './components/Share/Menubar/Menubar';
+import SignIn from './components/pages/Sign/SignIn/SignIn'
+import SignUp from './components/pages/Sign/SignUp/SignUp';
 
 function App() {
   return (
     <div className="App">
-      <h1 className='text-center my-10 text-4xl'>drone war-house</h1>
+      <Menubar />
+      <Routes>
+        <Route path='/' element={<Home />} />
+        <Route path='/home' element={<Home />} />
+        <Route path='/about' element={<About />} />
+        <Route path='/blogs' element={<Blogs />} />
+        <Route path='/sign-in' element={<SignIn />} />
+        <Route path='/sign-up' element={<SignUp />} />
+      </Routes>
     </div>
   );
 }
