@@ -4,11 +4,11 @@ import About from './components/pages/About/About';
 import Blogs from './components/pages/Blogs/Blogs';
 import Home from './components/pages/Home/Home';
 import Menubar from './components/Share/Menubar/Menubar';
-import SignIn from './components/pages/Sign/SignIn/SignIn'
-import SignUp from './components/pages/Sign/SignUp/SignUp';
 import UserProfile from './components/Share/UserProfile/UserProfile';
 import NotFound from './components/pages/NotFound/NotFound';
 import Footer from './components/Share/Footer/Footer';
+import SignIn from './components/pages/Login/SignIn/SignIn';
+import SignUp from './components/pages/Login/SignUp/SignUp';
 
 function App() {
   return (
