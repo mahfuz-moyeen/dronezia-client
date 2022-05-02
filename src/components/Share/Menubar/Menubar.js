@@ -3,11 +3,14 @@ import CustomLink from '../CustomLink/CustomLink'
 import { MenuAlt1Icon, XIcon } from '@heroicons/react/solid'
 import logo from '../../../image/logo.png'
 import { Link } from 'react-router-dom'
+import auth from '../../../firebase.init'
+import { useAuthState } from 'react-firebase-hooks/auth'
 
 const Menubar = () => {
 
     const [open, setOpen] = useState(false);
     const [profile, setProfile] = useState(false);
+    const [user] = useAuthState(auth);
 
 
     return (
@@ -43,56 +46,61 @@ const Menubar = () => {
 
                     <div>
                         <ul className="flex flex-col-reverse space-x-0 lg:space-x-6 lg:flex-row">
-                            
 
-                            {/* <div className='relative '>
-                                <div className="flex items-center space-x-4">
-                                    <button  className="w-10 h-10 outline-none rounded-full ring-offset-2 ring-gray-200 ring-2 lg:focus:ring-indigo-600"
-                                        onClick={() => setProfile(!profile)}
-                                    >
-                                        <img
-                                            src="https://randomuser.me/api/portraits/men/46.jpg"
-                                            className="w-full h-full rounded-full"
-                                            alt='userPhoto'
-                                        />
-                                    </button>
-                                    <div className="lg:hidden">
-                                        <span className="block">Micheal John</span>
-                                        <span className="block text-sm text-gray-500">john@gmail.com</span>
+                            {
+                                user ?
+
+                                    <div className='relative '>
+                                        <div className="flex items-center space-x-4">
+                                            <button className="w-10 h-10 outline-none rounded-full ring-offset-2 ring-gray-200 ring-2 lg:focus:ring-indigo-600"
+                                                onClick={() => setProfile(!profile)}
+                                            >
+                                                <img
+                                                    src="https://randomuser.me/api/portraits/men/46.jpg"
+                                                    className="w-full h-full rounded-full"
+                                                    alt='userPhoto'
+                                                />
+                                            </button>
+                                            <div className="lg:hidden">
+                                                <span className="block">{user?.displayName}</span>
+                                                <span className="block text-sm text-gray-500">{user?.email}</span>
+                                            </div>
+                                        </div>
+                                        <ul
+                                            className={`bg-white top-12 right-0 mt-5 space-y-5 lg:absolute lg:border lg:rounded-md lg:text-sm lg:w-52 lg:shadow-md lg:space-y-0 lg:mt-0 ${profile ? '' : 'lg:hidden'}`}>
+                                            <li>
+                                                <Link
+                                                    className="block text-gray-600 lg:hover:bg-gray-50 lg:p-2.5"
+                                                    to='/user-profile'
+                                                >
+                                                    Profile
+                                                </Link>
+                                            </li>
+                                            <li>
+                                                <p
+                                                    className=" text-gray-600 lg:hover:bg-gray-50 lg:p-2.5"
+                                                >
+                                                    sign out
+                                                </p>
+                                            </li>
+                                        </ul>
                                     </div>
-                                </div>
-                                <ul
-                                    className={`bg-white top-12 right-0 mt-5 space-y-5 lg:absolute lg:border lg:rounded-md lg:text-sm lg:w-52 lg:shadow-md lg:space-y-0 lg:mt-0 ${profile ? '' : 'lg:hidden'}`}>
-                                    <li>
-                                        <Link
-                                            className="block text-gray-600 lg:hover:bg-gray-50 lg:p-2.5"
-                                            to='/user-profile'
-                                        >
-                                            Profile
-                                        </Link>
-                                    </li>
-                                    <li>
-                                        <p
-                                            className=" text-gray-600 lg:hover:bg-gray-50 lg:p-2.5"
-                                        >
-                                            sign out
-                                        </p>
-                                    </li>
-                                </ul>
-                            </div> */}
 
-                            <>
-                                <li className="mt-4 lg:mt-0">
-                                    <CustomLink to="/sign-in" className="py-3 px-4 text-center border text-gray-600 hover:text-indigo-700 rounded-md lg:rounded-none block lg:inline lg:border-0">
-                                        Login
-                                    </CustomLink>
-                                </li>
-                                <li className="mt-8 lg:mt-0">
-                                    <Link to="/sign-up" className="py-3 px-4 text-center text-white bg-indigo-600 hover:bg-indigo-700 rounded-md shadow block lg:inline">
-                                        Sign Up
-                                    </Link>
-                                </li>
-                            </>
+                                    :
+
+                                    <>
+                                        <li className="mt-4 lg:mt-0">
+                                            <CustomLink to="/sign-in" className="py-3 px-4 text-center border text-gray-600 hover:text-indigo-700 rounded-md lg:rounded-none block lg:inline lg:border-0">
+                                                Login
+                                            </CustomLink>
+                                        </li>
+                                        <li className="mt-8 lg:mt-0">
+                                            <Link to="/sign-up" className="py-3 px-4 text-center text-white bg-indigo-600 hover:bg-indigo-700 rounded-md shadow block lg:inline">
+                                                Sign Up
+                                            </Link>
+                                        </li>
+                                    </>
+                            }
 
                         </ul>
                     </div>
@@ -116,7 +124,7 @@ const Menubar = () => {
                             </li>
                         </ul>
                     </div>
-                    
+
                 </div>
             </div>
         </nav>
