@@ -9,6 +9,8 @@
 * `React.js`
 * `React tailwind`
 * `React Router`
+* `Firebase`
+* `React Firebase Hook`
 * `CustomLink`
 * `heroicons`
 * `daisyui`
