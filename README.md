@@ -14,4 +14,5 @@
 * `CustomLink`
 * `heroicons`
 * `daisyui`
+* `flowbite`
 * `React hero icon`

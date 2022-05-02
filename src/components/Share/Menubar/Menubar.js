@@ -5,6 +5,7 @@ import logo from '../../../image/logo.png'
 import { Link } from 'react-router-dom'
 import auth from '../../../firebase.init'
 import { useAuthState } from 'react-firebase-hooks/auth'
+import { signOut } from 'firebase/auth';
 
 const Menubar = () => {
 
@@ -55,11 +56,18 @@ const Menubar = () => {
                                             <button className="w-10 h-10 outline-none rounded-full ring-offset-2 ring-gray-200 ring-2 lg:focus:ring-indigo-600"
                                                 onClick={() => setProfile(!profile)}
                                             >
-                                                <img
-                                                    src="https://randomuser.me/api/portraits/men/46.jpg"
-                                                    className="w-full h-full rounded-full"
-                                                    alt='userPhoto'
-                                                />
+                                                {
+                                                    user?.photoURL ?
+                                                        <img
+                                                            src={user.photoURL}
+                                                            className="w-full h-full rounded-full"
+                                                            alt='userPhoto'
+                                                        />
+                                                        :
+                                                        <div className="relative w-10 h-10 overflow-hidden bg-gray-100 rounded-full ">
+                                                            <svg className="absolute w-12 h-12 text-gray-400 -left-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd"></path></svg>
+                                                        </div>
+                                                }
                                             </button>
                                             <div className="lg:hidden">
                                                 <span className="block">{user?.displayName}</span>
@@ -78,9 +86,11 @@ const Menubar = () => {
                                             </li>
                                             <li>
                                                 <p
-                                                    className=" text-gray-600 lg:hover:bg-gray-50 lg:p-2.5"
+                                                    className="cursor-pointer text-gray-600 lg:hover:bg-gray-50 lg:p-2.5"
                                                 >
-                                                    sign out
+                                                    <button onClick={() => signOut(auth)}>
+                                                        sign out
+                                                    </button>
                                                 </p>
                                             </li>
                                         </ul>
