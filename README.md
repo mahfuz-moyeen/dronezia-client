@@ -15,4 +15,5 @@
 * `heroicons`
 * `daisyui`
 * `flowbite`
+* `tw-elements`
 * `React hero icon`

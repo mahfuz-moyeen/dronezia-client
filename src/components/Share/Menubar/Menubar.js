@@ -15,7 +15,7 @@ const Menubar = () => {
 
 
     return (
-        <nav className="bg-white w-full top-0 z-20 shadow-md">
+        <nav className="bg-white lg:bg-opacity-90 sticky-top w-full top-0 z-20 shadow-md">
             <div className="items-center px-4 max-w-screen-xl mx-auto lg:flex lg:px-8">
 
                 <div className="flex items-center justify-between py-3 lg:py-4 lg:block">
@@ -42,8 +42,8 @@ const Menubar = () => {
                         </button>
                     </div>
                 </div>
-
-                <div className={`flex-1 justify-between flex-row-reverse lg:overflow-visible lg:flex lg:pb-0 lg:pr-0 lg:h-auto ${open ? ' h-screen pb-20 overflow-auto pr-4' : 'hidden'}`}>
+                {/* mobile menu  (h-screen off)  */}
+                <div className={`flex-1 justify-between flex-row-reverse lg:overflow-visible lg:flex lg:pb-0 lg:pr-0 lg:h-auto ${open ? ' pb-20 overflow-auto pr-4' : 'hidden'}`}>
 
                     <div>
                         <ul className="flex flex-col-reverse space-x-0 lg:space-x-6 lg:flex-row">
