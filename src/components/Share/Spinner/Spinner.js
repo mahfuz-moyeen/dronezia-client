@@ -5,7 +5,7 @@ const Spinner = () => {
         <div className='max-h-screen'>
             <div className='p-10'></div>
             <div className="flex justify-center items-center">
-                <span class="loader"></span>
+                <span className="loader"></span>
             </div>
         </div>
 
