@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import SocialSignIn from '../SocialSignIn/SocialSignIn';
+import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import auth from '../../../../firebase.init';
 
 const SignUp = () => {
 
@@ -7,6 +9,10 @@ const SignUp = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
+
+    const [passError, setPassError] = useState('');
+
+    const [createUserWithEmailAndPassword, user, loading, error,] = useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
 
     const handleNameBlur = event => {
         setName(event.target.value);
@@ -24,13 +30,30 @@ const SignUp = () => {
     const handleFormSubmit = async (event) => {
         event.preventDefault();
         console.log(name, email, password);
+        if (/^(?=.*?[#?!@$%^&*-]).{8,}$/.test(password)) {
+            setPassError('');
+
+            if (password === confirmPassword) {
+                setPassError('');
+                await createUserWithEmailAndPassword(email, password);
+                console.log('send');
+                console.log(user);
+                event.target.reset()
+            }
+            else {
+                setPassError("Two password did not match");
+            }
+        }
+        else {
+            setPassError('Min 8 character & one special character');
+        }
     }
 
     return (
         <div>
             <div className="hero min-h-screen bg-base-200">
                 <div className="hero-content flex-col lg:flex-row-reverse">
-                    <div className="text-center lg:text-left mx-10">
+                    <div className="text-center lg:text-left mx-auto">
                         <h1 className="text-4xl font-bold">Sign Up!</h1>
                         <p className="py-6">Create account to use this website properly. </p>
                     </div>
@@ -67,22 +90,31 @@ const SignUp = () => {
                             </div>
 
                             {/* password */}
+
                             <div className="relative z-0 w-full mb-6 group">
                                 <input
                                     type="password"
                                     name="floating_password"
                                     onBlur={handlePasswordBlur}
-                                    className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-500  focus:outline-none focus:ring-0 focus:border-blue-600 peer" 
+                                    className={`block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 focus:outline-none focus:ring-0 focus:border-blue-600 peer
+                                    ${passError ? 'border-red-500' : 'border-gray-500'}`}
                                     placeholder=" "
                                     required />
                                 <label htmlFor="floating_password" className="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Password</label>
+
+                                <div className={`tooltip tooltip-right tooltip-error ${passError ? 'tooltip-open' : ''}`} data-tip={passError}>
+                                    <p className='block mx-auto'> </p>
+                                </div>
+                                {/* <p className='text-center text-sm text-red-500'>{passError}</p> */}
                             </div>
+
 
                             {/*confirm password */}
                             <div className="relative z-0 w-full mb-6 group">
                                 <input
                                     type="password"
                                     name="floating_confirmPassword"
+                                    onBlur={handleConfirmPasswordBlur}
                                     className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-500  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" "
                                     required />
                                 <label htmlFor="floating_confirmPassword" className="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Confirm Password</label>
