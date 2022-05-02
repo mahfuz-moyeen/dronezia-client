@@ -12,7 +12,7 @@ import SignUp from './components/pages/Login/SignUp/SignUp';
 
 function App() {
   return (
-    <div className="App">
+    <div className="App bg-base-200">
 
       {/* menubar */}
       <Menubar />
