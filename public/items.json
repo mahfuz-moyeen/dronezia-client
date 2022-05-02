@@ -1,0 +1,56 @@
+[
+    {
+      "id": 1,
+      "name": "Mavic Air 2",
+      "img": "https://i.ibb.co/0fvDK2R/mavic-air-2.png",
+      "price": 799,
+      "quantity": 1,
+      "supplier": "DJI",
+      "description": "Mavic Air 2 takes power and portability to the next level, offering advanced features in a compact form factor."
+    },
+    {
+      "id": 2,
+      "name": "Dji Mini 2",
+      "img": "https://i.ibb.co/Kr3fb1j/dji-mini-2.png",
+      "price": 999,
+      "quantity": 1,
+      "supplier": "DJI",
+      "description": "Small but mighty, DJI Mini 2 features 4K videos, 4x Zoom, and stunning panoramas, allowing you to explore a whole new perspective."
+    },
+    {
+      "id": 3,
+      "name": "Inspire 2",
+      "img": "https://i.ibb.co/MpLFC12/inspire-2.png",
+      "price": 3000,
+      "quantity": 1,
+      "supplier": "DJI",
+      "description": "kkkkkkk. kkkkkkkkkk kkkkkkkk kkkkkkkkk"
+    },
+    {
+      "id": 4,
+      "name": "Phantom 4 pro",
+      "img": "https://i.ibb.co/Jnrn0xt/phantom-4-pro-v-2.png",
+      "price": 1499,
+      "quantity": 1,
+      "supplier": "DJI",
+      "description": "1-inch 20MP Exmor R CMOS sensor, longer flight time and smarter features."
+    },
+    {
+      "id": 5,
+      "name": "Dji FPV Combo",
+      "img": "https://i.ibb.co/10d5HkS/dji-fpv-combo.png",
+      "price": 999,
+      "quantity": 1,
+      "supplier": "DJI",
+      "description": "DJI FPV turns your aerial imagination into reality. With this immersive, intuitive, and ready-to-fly FPV system, get ready to go into the beyond."
+    },
+    {
+      "id": 6,
+      "name": "Matrice 300 RTK",
+      "img": "https://i.ibb.co/jZXGNqX/matrice-300-rtk.png",
+      "price": 13999,
+      "quantity": 1,
+      "supplier": "DJI",
+      "description": "yyyyyyyyyyy yyyyyyyyyyyy yyyyyyyyyyyy."
+    }
+  ]
