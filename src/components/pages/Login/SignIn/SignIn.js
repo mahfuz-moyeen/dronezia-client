@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
-import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { useSendPasswordResetEmail, useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../../../firebase.init';
+import Spinner from '../../../Share/Spinner/Spinner';
 import SocialSignIn from '../SocialSignIn/SocialSignIn';
 
 const SignIn = () => {
@@ -8,7 +10,11 @@ const SignIn = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
+    const navigate = useNavigate();
+    const location = useLocation();
+
     const [signInWithEmailAndPassword, user, loading, error,] = useSignInWithEmailAndPassword(auth);
+    const [sendPasswordResetEmail, sending] = useSendPasswordResetEmail(auth);
 
     const handleEmailBlur = event => {
         setEmail(event.target.value);
@@ -16,15 +22,34 @@ const SignIn = () => {
 
     const handlePasswordBlur = event => {
         setPassword(event.target.value);
-        signInWithEmailAndPassword(email, password)
-        console.log('login');
-        console.log(user);
     }
 
+    // if got user 
+    if (loading || sending) {
+        return <Spinner />
+    }
+
+    if (user) {
+        const from = location.state?.from?.pathname || "/";
+        navigate(from, { replace: true });
+    }
+
+    // sign in form 
     const handleSignIn = event => {
         event.preventDefault();
-        console.log(email, password);
+        signInWithEmailAndPassword(email, password)
     }
+
+    // forget password 
+    const handleForgetPassword = async () => {
+
+        if (email) {
+            await sendPasswordResetEmail(email);
+        }
+
+    }
+
+
     return (
         <div>
             <div className="hero min-h-screen bg-base-200">
@@ -61,17 +86,22 @@ const SignIn = () => {
                                 <label htmlFor="floating_password" className="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Password</label>
                             </div>
 
-
-                            {/* <div>
+                            {/* firebase error  */}
+                            <div>
                                 {
                                     error ? <p className='text-center text-sm text-red-500'>{error?.message.slice(22)}</p> : <></>
                                 }
-                            </div> */}
+                            </div>
+
+                            <div className=''>
+                                <button
+                                    className='hover:text-blue-600'
+                                    onClick={() => handleForgetPassword()}>Forgot Password ?</button>
+                            </div>
                             <div className="form-control mt-6">
                                 <input type='submit' value='Sign In' className="btn btn-primary" />
                             </div>
                         </form>
-
                     </div>
 
                     <div className="text-center lg:text-left mx-auto">
