@@ -8,11 +8,11 @@ import emailVerify from '../../../../image/emailverify.jpg'
 const RequireAuth = ({ children }) => {
 
     const [user, loading] = useAuthState(auth);
-    const [sendEmailVerification, sending, error] = useSendEmailVerification(auth);
+    const [sendEmailVerification, sending] = useSendEmailVerification(auth);
 
     const location = useLocation();
 
-    if (loading) {
+    if (loading || sending) {
         return <Spinner />
     }
 
@@ -20,21 +20,28 @@ const RequireAuth = ({ children }) => {
         return <Navigate to="/sign-in" state={{ from: location }} replace />;
     }
 
+    const handleEmailVerify = async () => {
+        await sendEmailVerification();
+        alert('send email')
+    }
+
     if (user.providerData[0]?.providerId === 'password' && !user.emailVerified) {
-        return <div className='text-center mt-5 w-10/12 mx-auto'>
-            <img className='block mx-auto' width={400} height={400} src={emailVerify} alt="emailVerify" />
-            <h3 className='text-danger'>Your Email is not verified!!</h3>
-            <h5 className='text-success'> Please Verify your email address</h5>
-            <button
-                className='btn btn-primary'
-                onClick={async () => {
-                    await sendEmailVerification();
-                    alert('Sent email');
-                }}
-            >
-                Send Verification Email Again
-            </button>
-            
+        return <div className='text-center my-5 w-10/12 mx-auto'>
+            <div class="max-w-md mx-auto bg-white rounded-lg shadow-md">
+                <img class="p-8 rounded-t-lg" src={emailVerify} alt="email verify" />
+
+                <div class="px-5 pb-5 -my-10">
+                    <h5 class="text-xl my-5 font-semibold tracking-tight text-indigo-700">Verify your email address</h5>
+                    <div className='p-5 text-sm'>
+                        <p>You've entered <span className='text-orange-500 font-semibold'>{user?.email}</span> as the email address to your account</p>
+                        <p className='my-3'>Please verify this email address by clicking button below</p>
+                    </div>
+                    <button
+                        className='btn btn-primary'
+                        onClick={() => handleEmailVerify()}
+                    >Verify your email</button>
+                </div>
+            </div>
         </div>
     }
 
