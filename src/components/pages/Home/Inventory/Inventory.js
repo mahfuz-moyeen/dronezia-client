@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import InventoryItem from '../InventoryItem/InventoryItem';
+import ItemCard from '../ItemCard/ItemCard';
 
 const Inventory = () => {
     const [items, setItems] = useState([]);
@@ -18,7 +18,7 @@ const Inventory = () => {
                 <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5'>
 
                     {
-                        items.map(item => <InventoryItem
+                        items.map(item => <ItemCard
                             key={item.id}
                             item={item}
                         />

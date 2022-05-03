@@ -5,7 +5,7 @@ import logo from '../../../image/logo.png';
 const Footer = () => {
 
     return (
-        <div className='h-screen relative'>
+        <div style={{height:'80vh'}} className='relative'>
             <footer className='bg-neutral w-full absolute bottom-0'>
                 <div className='max-w-screen-xl mx-auto'>
                     <div className="footer md:flex md:justify-around  p-10 bg-neutral text-neutral-content items-center ">

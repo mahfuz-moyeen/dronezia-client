@@ -11,6 +11,7 @@ import SignIn from './components/pages/Login/SignIn/SignIn';
 import SignUp from './components/pages/Login/SignUp/SignUp';
 import Inventory from './components/pages/Home/Inventory/Inventory';
 import RequireAuth from './components/pages/Login/RequireAuth/RequireAuth';
+import InventoryItem from './components/pages/InventoryItem/InventoryItem';
 
 function App() {
   return (
@@ -25,11 +26,14 @@ function App() {
         <Route path='/home' element={<Home />} />
         <Route path='/about' element={<About />} />
 
-        <Route path='/inventory' element={
-        <RequireAuth>
+        <Route path='/inventory' element={<RequireAuth>
           <Inventory />
         </RequireAuth>} />
-        
+
+        <Route path='/inventory/:id' element={<RequireAuth>
+          <InventoryItem />
+        </RequireAuth>} />
+
         <Route path='/blogs' element={<Blogs />} />
         <Route path='/sign-in' element={<SignIn />} />
         <Route path='/sign-up' element={<SignUp />} />
