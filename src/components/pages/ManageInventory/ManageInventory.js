@@ -38,39 +38,39 @@ const ManageInventory = () => {
                                 </th>
                             </tr>
                         </thead>
-                        {
-                            <tbody>
+                        {items.map(item => < tbody >
                                 <tr className="bg-white border-b  hover:bg-indigo-50">
                                     <th scope="row" className="px-6 py-4 font-medium text-gray-900  whitespace-nowrap">
-                                        {`mavic 2`}
+                                        {item?.name}
                                     </th>
                                     <td className="px-6 py-4">
-                                        {`DJI`}
+                                    {item?.supplier}
                                     </td>
                                     <td className="px-6 py-4">
-                                        {`10`}
+                                    {item?.quantity}
                                     </td>
                                     <td className="px-6 py-4">
-                                        $ {`100`}
+                                        $ {item?.price}
                                     </td>
                                     <td className="px-6 py-4 flex justify-around">
 
-                                        <Link to={`/inventory/${`2`}`} className="btn btn-primary font-medium">
+                                        <Link to={`/inventory/${item?.id}`} className="btn btn-primary font-medium">
                                             <PencilIcon className="h-5 w-5" /></Link>
 
 
-                                        <Link to={`/inventory/${`2`}`} className="btn bg-rose-600 border-0 hover:bg-rose-700 font-medium">
+                                        <Link to={`/inventory/${item?.id}`} className="btn bg-rose-600 border-0 hover:bg-rose-700 font-medium">
                                             <TrashIcon className="h-5 w-5" /></Link>
 
                                     </td>
                                 </tr>
 
                             </tbody>
+                        )
                         }
                     </table>
                 </div>
             </div>
-        </div>
+        </div >
     );
 };
 
