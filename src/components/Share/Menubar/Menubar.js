@@ -124,9 +124,19 @@ const Menubar = () => {
                             </li>
                             <li className="mt-8 mb-8 lg:mt-0 lg:mb-0">
                                 <CustomLink to="/inventory" className="py-3 px-4 text-center text-gray-600 hover:text-indigo-600">
-                                Inventory
+                                    Inventory
                                 </CustomLink>
                             </li>
+                            {
+                                user?.uid ?
+                                <li className="mt-8 mb-8 lg:mt-0 lg:mb-0">
+                                    <CustomLink to="/manage-inventory" className="py-3 px-4 text-center text-gray-600 hover:text-indigo-600">
+                                        Manage Inventory
+                                    </CustomLink>
+                                </li>
+                                :
+                                <></>
+                            }
                             <li className="mt-8 mb-8 lg:mt-0 lg:mb-0">
                                 <CustomLink to="/blogs" className="py-3 px-4 text-center text-gray-600 hover:text-indigo-600">
                                     Blogs
