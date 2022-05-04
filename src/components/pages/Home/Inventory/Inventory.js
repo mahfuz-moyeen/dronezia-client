@@ -1,14 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
+import useInventory from '../../../../Hook/useInventory';
 import ItemCard from '../ItemCard/ItemCard';
 
 const Inventory = () => {
-    const [items, setItems] = useState([]);
-
-    useEffect(() => {
-        fetch('items.json')
-            .then(res => res.json())
-            .then(data => setItems(data))
-    }, [])
+    const [items] = useInventory();
 
     return (
         <div className='container mx-auto'>
