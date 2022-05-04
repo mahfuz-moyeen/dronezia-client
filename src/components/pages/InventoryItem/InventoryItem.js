@@ -8,6 +8,27 @@ const InventoryItem = () => {
 
     const { name, img, price, quantity, supplier, description } = item;
 
+    const handleRestockSubmit = event => {
+        event.preventDefault();
+        const number = event.target.number.value;
+
+        // update to server 
+        const restockQuantity = parseInt(number) + parseInt(quantity);
+        const updateInventory = { quantity: restockQuantity }
+
+        fetch(`http://localhost:5000/inventory/${inventoryId}`, {
+            method: 'PUT',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(updateInventory)
+        })
+            .then(res => res.json())
+            .then(data => {
+                alert('restock successfully');
+            })
+    }
+
     return (
         <div>
             <div className='w-11/12 mx-auto mt-10'>
@@ -25,10 +46,10 @@ const InventoryItem = () => {
 
                         <div className="card-actions flex-col lg:flex-row justify-between">
 
-                            <form className="form-control">
+                            <form className="form-control" onSubmit={handleRestockSubmit}>
                                 <label className="input-group">
                                     <input type='submit' value='RESTOCK' className="btn btn-primary" />
-                                    <input type="number" placeholder="Restock Quantity" className="input input-bordered" required />
+                                    <input type="number" name='number' placeholder="Restock Quantity" className="input input-bordered" required />
                                 </label>
                             </form>
 
