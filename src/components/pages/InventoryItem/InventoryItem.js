@@ -28,6 +28,31 @@ const InventoryItem = () => {
                 alert('restock successfully');
             })
     }
+    const handleDeliveredSubmit = () => {
+        // update to server 
+
+
+        if ( parseInt(quantity) > 0) {
+            const DeliveredQuantity = parseInt(quantity) - 1;
+            const updateInventory = { quantity: DeliveredQuantity }
+
+            fetch(`http://localhost:5000/inventory/${inventoryId}`, {
+                method: 'PUT',
+                headers: {
+                    'content-type': 'application/json'
+                },
+                body: JSON.stringify(updateInventory)
+            })
+                .then(res => res.json())
+                .then(data => {
+                    alert('Delivered successfully');
+                })
+        }
+
+        else {
+            alert('sorry out of stock');
+        }
+    }
 
     return (
         <div>
@@ -53,7 +78,9 @@ const InventoryItem = () => {
                                 </label>
                             </form>
 
-                            <button className="btn border-0 bg-rose-600 hover:bg-rose-700">Delivered
+                            <button
+                                onClick={() => handleDeliveredSubmit()}
+                                className="btn border-0 bg-rose-600 hover:bg-rose-700">Delivered
                             </button>
 
                         </div>
