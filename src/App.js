@@ -13,6 +13,8 @@ import Inventory from './components/pages/Home/Inventory/Inventory';
 import RequireAuth from './components/pages/Login/RequireAuth/RequireAuth';
 import InventoryItem from './components/pages/InventoryItem/InventoryItem';
 import ManageInventory from './components/pages/ManageInventory/ManageInventory/ManageInventory';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   return (
@@ -20,7 +22,6 @@ function App() {
 
       {/* menubar */}
       <Menubar />
-
       {/* All page  */}
       <Routes>
         <Route path='/' element={<Home />} />
@@ -47,6 +48,8 @@ function App() {
 
         <Route path='*' element={<NotFound />} />
       </Routes>
+
+      <ToastContainer />
 
       {/* footer  */}
       <Footer />

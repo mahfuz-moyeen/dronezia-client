@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Banner from '../Banner/Banner';
 import ItemCard from '../ItemCard/ItemCard';
-// import Inventory from '../Inventory/Inventory';
 
 const Home = () => {
     const [items, setItems] = useState([]);

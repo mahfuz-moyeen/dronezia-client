@@ -4,6 +4,7 @@ import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-fireb
 import auth from '../../../../firebase.init';
 import Spinner from '../../../Share/Spinner/Spinner';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 const SignUp = () => {
 
@@ -36,7 +37,6 @@ const SignUp = () => {
 
     const handleFormSubmit = async (event) => {
         event.preventDefault();
-        console.log(name, email, password);
         if (/^(?=.*?[#?!@$%^&*-]).{8,}$/.test(password)) {
             setPassError('');
 
@@ -44,7 +44,7 @@ const SignUp = () => {
                 setPassError('');
                 await createUserWithEmailAndPassword(email, password);
                 await updateProfile({ displayName: name });
-                event.target.reset()
+
             }
             else {
                 setPassError("Two password did not match");
@@ -63,6 +63,7 @@ const SignUp = () => {
     if (user) {
         const from = location.state?.from?.pathname || "/";
         navigate(from, { replace: true });
+        toast.info(`Send verification to`)
     }
 
     return (
@@ -154,7 +155,7 @@ const SignUp = () => {
                             </div>
 
                             <SocialSignIn />
-                            
+
                         </div>
                     </div>
                 </div>

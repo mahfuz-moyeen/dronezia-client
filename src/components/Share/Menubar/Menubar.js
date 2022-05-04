@@ -15,7 +15,7 @@ const Menubar = () => {
 
 
     return (
-        <nav className="bg-white lg:bg-opacity-90 sticky-top w-full top-0 z-20 shadow-md">
+        <nav className="bg-white lg:bg-opacity-90 sticky w-full top-0 z-20 shadow-md">
             <div className="items-center px-4 max-w-screen-xl mx-auto lg:flex lg:px-8">
 
                 <div className="flex items-center justify-between py-3 lg:py-4 lg:block">
@@ -78,20 +78,20 @@ const Menubar = () => {
                                             className={`bg-white top-12 right-0 mt-5 space-y-5 lg:absolute lg:border lg:rounded-md lg:text-sm lg:w-52 lg:shadow-md lg:space-y-0 lg:mt-0 ${profile ? '' : 'lg:hidden'}`}>
                                             <li>
                                                 <Link
-                                                    className="block text-gray-600 lg:hover:bg-gray-50 lg:p-2.5"
+                                                    className="block text-gray-600 lg:hover:bg-indigo-100 lg:p-2.5"
                                                     to='/user-profile'
                                                 >
                                                     Profile
                                                 </Link>
                                             </li>
                                             <li>
-                                                <p
-                                                    className="cursor-pointer text-gray-600 lg:hover:bg-gray-50 lg:p-2.5"
+                                                <button
+                                                    onClick={() => signOut(auth)}
+                                                    className="w-full text-left  cursor-pointer text-gray-600 lg:hover:bg-indigo-100 lg:p-2.5"
                                                 >
-                                                    <button onClick={() => signOut(auth)}>
-                                                        sign out
-                                                    </button>
-                                                </p>
+
+                                                    sign out
+                                                </button>
                                             </li>
                                         </ul>
                                     </div>
@@ -129,13 +129,13 @@ const Menubar = () => {
                             </li>
                             {
                                 user?.uid ?
-                                <li className="mt-8 mb-8 lg:mt-0 lg:mb-0">
-                                    <CustomLink to="/manage-inventory" className="py-3 px-4 text-center text-gray-600 hover:text-indigo-600">
-                                        Manage Inventory
-                                    </CustomLink>
-                                </li>
-                                :
-                                <></>
+                                    <li className="mt-8 mb-8 lg:mt-0 lg:mb-0">
+                                        <CustomLink to="/manage-inventory" className="py-3 px-4 text-center text-gray-600 hover:text-indigo-600">
+                                            Manage Inventory
+                                        </CustomLink>
+                                    </li>
+                                    :
+                                    <></>
                             }
                             <li className="mt-8 mb-8 lg:mt-0 lg:mb-0">
                                 <CustomLink to="/blogs" className="py-3 px-4 text-center text-gray-600 hover:text-indigo-600">

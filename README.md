@@ -18,3 +18,5 @@
 * `tw-elements`
 * `React hero icon`
 * `React custom hook`
+* `React custom hook`
+* `React Toastify`

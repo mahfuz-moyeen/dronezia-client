@@ -4,6 +4,7 @@ import { Navigate, useLocation } from 'react-router-dom';
 import auth from '../../../../firebase.init';
 import Spinner from '../../../Share/Spinner/Spinner';
 import emailVerify from '../../../../image/emailverify.jpg'
+import { toast } from 'react-toastify';
 
 const RequireAuth = ({ children }) => {
 
@@ -22,7 +23,7 @@ const RequireAuth = ({ children }) => {
 
     const handleEmailVerify = async () => {
         await sendEmailVerification();
-        alert('send email')
+        toast.info(`Send verification to ${user?.email}`)
     }
 
     if (user.providerData[0]?.providerId === 'password' && !user.emailVerified) {

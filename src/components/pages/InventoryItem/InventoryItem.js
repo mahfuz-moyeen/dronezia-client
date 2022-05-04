@@ -1,5 +1,6 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
+import { toast, ToastContainer } from 'react-toastify';
 import useInventoryDetails from '../../../Hook/useInventoryDetails';
 
 const InventoryItem = () => {
@@ -25,17 +26,14 @@ const InventoryItem = () => {
         })
             .then(res => res.json())
             .then(data => {
-                alert('restock successfully');
+                toast.success('restock successfully');
             })
     }
     const handleDeliveredSubmit = () => {
-        // update to server 
-
-
-        if ( parseInt(quantity) > 0) {
+        if (parseInt(quantity) > 0) {
             const DeliveredQuantity = parseInt(quantity) - 1;
             const updateInventory = { quantity: DeliveredQuantity }
-
+            // update to server 
             fetch(`http://localhost:5000/inventory/${inventoryId}`, {
                 method: 'PUT',
                 headers: {
@@ -45,12 +43,12 @@ const InventoryItem = () => {
             })
                 .then(res => res.json())
                 .then(data => {
-                    alert('Delivered successfully');
+                    toast.success('Delivered successfully');
                 })
         }
 
         else {
-            alert('sorry out of stock');
+            toast.error('sorry out of stock');
         }
     }
 
