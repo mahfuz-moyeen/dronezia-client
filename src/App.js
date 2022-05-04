@@ -12,7 +12,7 @@ import SignUp from './components/pages/Login/SignUp/SignUp';
 import Inventory from './components/pages/Home/Inventory/Inventory';
 import RequireAuth from './components/pages/Login/RequireAuth/RequireAuth';
 import InventoryItem from './components/pages/InventoryItem/InventoryItem';
-import ManageInventory from './components/pages/ManageInventory/ManageInventory';
+import ManageInventory from './components/pages/ManageInventory/ManageInventory/ManageInventory';
 
 function App() {
   return (

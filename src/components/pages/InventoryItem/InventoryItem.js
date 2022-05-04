@@ -10,7 +10,7 @@ const InventoryItem = () => {
 
     return (
         <div>
-            <div className='w-11/12 mx-auto'>
+            <div className='w-11/12 mx-auto mt-10'>
                 <div className="card lg:card-side bg-base-100 shadow-xl">
 
                     <figure><img className='hover:scale-110 transform duration-100 ease-linear' src={img} alt={name} /></figure>
