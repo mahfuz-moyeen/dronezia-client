@@ -1,12 +1,10 @@
 import { PencilIcon, TrashIcon } from '@heroicons/react/solid';
 import React from 'react';
 import { Link } from 'react-router-dom';
-import useInventory from '../../../../Hook/useInventory';
 
-const ManageInventoryDetails = ({ item }) => {
+const ManageInventoryDetails = ({ item, items, setItems }) => {
     const { _id, name, supplier, quantity, price } = item;
 
-    const [items, setItems] = useInventory();
 
     const handleDeleteInventory = id => {
         const proceed = window.confirm(`Are you sure to delete ${item.name}`)

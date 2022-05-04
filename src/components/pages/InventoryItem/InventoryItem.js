@@ -17,9 +17,9 @@ const InventoryItem = () => {
                     <div className="card-body lg:w-7/12">
                         <div className='lg:my-auto'>
                             <h2 className="text-xl font-semibold my-5 lg:text-4xl">{name}</h2>
-                            <p className=" lg:text-xl my-2">Brand: {supplier}</p>
-                            <p className=" lg:text-xl my-2">Price: ${price}</p>
-                            <p className="lg:text-lg my-2">Description: {description}</p>
+                            <p className=" lg:text-xl my-2"><span className=' font-semibold'>Supplier:</span> {supplier}</p>
+                            <p className=" lg:text-xl my-2"><span className=' font-semibold'>Price:</span> ${price}</p>
+                            <p className="lg:text-lg my-2"><span className=' font-semibold'>Description:</span> {description}</p>
                             <div className="badge lg:text-xl p-4 lg:mb-0 mb-10">In Stock: {quantity}</div>
                         </div>
 

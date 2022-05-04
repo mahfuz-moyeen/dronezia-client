@@ -3,7 +3,8 @@ import useInventory from '../../../../Hook/useInventory';
 import ManageInventoryDetails from '../ManageInventoryDetails/ManageInventoryDetails';
 
 const ManageInventory = () => {
-    const [items] = useInventory();
+    const [items, setItems] = useInventory();
+
 
     return (
         <div>
@@ -39,6 +40,8 @@ const ManageInventory = () => {
                             {items.map(item => <ManageInventoryDetails
                                 key={item._id}
                                 item={item}
+                                items={items}
+                                setItems={setItems}
                             />)
                             }
                         </tbody>
