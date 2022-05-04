@@ -2,7 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const ItemCard = ({ item }) => {
-    const { id, name, img, price, quantity, supplier, description } = item;
+    const { _id, name, img, price, quantity, supplier, description } = item;
     const navigate = useNavigate();
     return (
         < div className="card card-compact w-10/12 mx-auto bg-base-100 shadow-xl hover:shadow-2xl" >
@@ -20,7 +20,7 @@ const ItemCard = ({ item }) => {
                 <p>{description}</p>
                 <div className="card-actions justify-between">
                     <span className="text-3xl font-bold text-gray-900">${price}</span>
-                    <button className="btn btn-primary" onClick={() => navigate(`/inventory/${id}`)}>stock update</button>
+                    <button className="btn btn-primary" onClick={() => navigate(`/inventory/${_id}`)}>stock update</button>
                 </div>
             </div>
         </div >

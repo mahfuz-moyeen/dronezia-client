@@ -4,7 +4,7 @@ import ItemCard from '../ItemCard/ItemCard';
 
 const Inventory = () => {
     const [items] = useInventory();
-
+    
     return (
         <div className='container mx-auto'>
             <h1 className='text-4xl font-semibold my-10 text-center'>Inventory <span className='text-primary'>Items</span></h1>
@@ -14,7 +14,7 @@ const Inventory = () => {
 
                     {
                         items.map(item => <ItemCard
-                            key={item.id}
+                            key={item._id}
                             item={item}
                         />
                         )

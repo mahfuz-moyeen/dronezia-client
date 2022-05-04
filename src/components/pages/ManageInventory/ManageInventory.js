@@ -1,19 +1,14 @@
 import { PencilIcon, TrashIcon } from '@heroicons/react/solid';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
+import useInventory from '../../../Hook/useInventory';
 
 const ManageInventory = () => {
-    const [items, setItems] = useState([]);
-
-    useEffect(() => {
-        fetch('items.json')
-            .then(res => res.json())
-            .then(data => setItems(data))
-    }, [])
+    const [items] = useInventory();
 
     return (
         <div>
-            <h1 className='text-4xl font-semibold my-10 text-center'>Manage <span className='text-primary'>Invantory</span></h1>
+            <h1 className='text-4xl font-semibold my-10 text-center'>Manage <span className='text-primary'>Inventory</span></h1>
 
             <div className='w-11/12 mx-auto mt-10'>
 
@@ -38,33 +33,35 @@ const ManageInventory = () => {
                                 </th>
                             </tr>
                         </thead>
-                        {items.map(item => < tbody >
-                                <tr className="bg-white border-b  hover:bg-indigo-50">
-                                    <th scope="row" className="px-6 py-4 font-medium text-gray-900  whitespace-nowrap">
-                                        {item?.name}
-                                    </th>
-                                    <td className="px-6 py-4">
+                        {items.map(item => < tbody
+                            key={item._id}
+                        >
+                            <tr className="bg-white border-b  hover:bg-indigo-50">
+                                <th scope="row" className="px-6 py-4 font-medium text-gray-900  whitespace-nowrap">
+                                    {item?.name}
+                                </th>
+                                <td className="px-6 py-4">
                                     {item?.supplier}
-                                    </td>
-                                    <td className="px-6 py-4">
+                                </td>
+                                <td className="px-6 py-4">
                                     {item?.quantity}
-                                    </td>
-                                    <td className="px-6 py-4">
-                                        $ {item?.price}
-                                    </td>
-                                    <td className="px-6 py-4 flex justify-around">
+                                </td>
+                                <td className="px-6 py-4">
+                                    $ {item?.price}
+                                </td>
+                                <td className="px-6 py-4 flex justify-around">
 
-                                        <Link to={`/inventory/${item?.id}`} className="btn btn-primary font-medium">
-                                            <PencilIcon className="h-5 w-5" /></Link>
+                                    <Link to={`/inventory/${item?._id}`} className="btn btn-primary font-medium">
+                                        <PencilIcon className="h-5 w-5" /></Link>
 
 
-                                        <Link to={`/inventory/${item?.id}`} className="btn bg-rose-600 border-0 hover:bg-rose-700 font-medium">
-                                            <TrashIcon className="h-5 w-5" /></Link>
+                                    <Link to={`/inventory/${item?._id}`} className="btn bg-rose-600 border-0 hover:bg-rose-700 font-medium">
+                                        <TrashIcon className="h-5 w-5" /></Link>
 
-                                    </td>
-                                </tr>
+                                </td>
+                            </tr>
 
-                            </tbody>
+                        </tbody>
                         )
                         }
                     </table>

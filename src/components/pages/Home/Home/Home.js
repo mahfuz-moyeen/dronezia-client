@@ -25,7 +25,7 @@ const Home = () => {
 
                     {
                         items.map(item => <ItemCard
-                            key={item.id}
+                            key={item._id}
                             item={item}
                         />
                         )
