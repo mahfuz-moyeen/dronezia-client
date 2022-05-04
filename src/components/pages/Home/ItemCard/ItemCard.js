@@ -14,7 +14,12 @@ const ItemCard = ({ item }) => {
                         <div className="badge badge-outline">{supplier}</div>
                     </div>
                     <div className="card-actions justify-end">
-                        <div className="badge">In Stock: {quantity}</div>
+                        {
+                            quantity > 0 ?
+                                <div className="badge">In Stock: {quantity}</div>
+                                :
+                                <div className="badge badge-error">Stock out: {quantity}</div>
+                        }
                     </div>
                 </div>
                 <p>{description}</p>

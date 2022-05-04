@@ -52,7 +52,7 @@ const InventoryItem = () => {
         }
 
         else {
-            toast.error('sorry out of stock');
+            toast.error('Sorry out of stock !!');
         }
     }
 
@@ -68,7 +68,11 @@ const InventoryItem = () => {
                             <p className=" lg:text-xl my-2"><span className=' font-semibold'>Supplier:</span> {supplier}</p>
                             <p className=" lg:text-xl my-2"><span className=' font-semibold'>Price:</span> ${price}</p>
                             <p className="lg:text-lg my-2"><span className=' font-semibold'>Description:</span> {description}</p>
-                            <div className="badge lg:text-xl p-4 lg:mb-0 mb-10">In Stock: {quantity}</div>
+                            {
+                                quantity > 0 ?
+                                <div className="badge lg:text-xl p-4 lg:mb-0 mb-10">In Stock: {quantity}</div> :
+                                <div className="badge badge-error lg:text-xl p-4 lg:mb-0 mb-10">Stock Out: {quantity}</div>
+                            }
                         </div>
 
                         <div className="card-actions flex-col lg:flex-row justify-between">

@@ -22,17 +22,17 @@ const ManageInventory = () => {
                                 <th scope="col" className="px-6 py-3">
                                     Product name
                                 </th>
-                                <th scope="col" className="px-6 py-3">
-                                    Brand
+                                <th scope="col" className="px-6 py-3 hidden lg:table-cell">
+                                    Supplier
                                 </th>
-                                <th scope="col" className="px-6 py-3">
+                                <th scope="col" className="px-6 py-3 hidden lg:table-cell">
                                     In Stock
                                 </th>
-                                <th scope="col" className="px-6 py-3">
+                                <th scope="col" className="px-6 py-3 hidden lg:table-cell">
                                     Price
                                 </th>
                                 <th scope="col" className="px-6 py-3 text-center">
-                                    Edit and Delete
+                                   <span className='hidden'> Edit and Delete</span>
                                 </th>
                             </tr>
                         </thead>
