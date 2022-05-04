@@ -20,3 +20,4 @@
 * `React custom hook`
 * `React custom hook`
 * `React Toastify`
+* `React Carousel Minimal`

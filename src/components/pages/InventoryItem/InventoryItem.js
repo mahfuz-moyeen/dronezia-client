@@ -1,18 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
 import useInventoryDetails from '../../../Hook/useInventoryDetails';
 
 const InventoryItem = () => {
     const { inventoryId } = useParams();
-    const [item] = useInventoryDetails(inventoryId);
+    const [update, setUpdate] = useState([]);
+    const [item] = useInventoryDetails(inventoryId, update);
+
+
 
     const { name, img, price, quantity, supplier, description } = item;
 
     const handleRestockSubmit = event => {
         event.preventDefault();
         const number = event.target.number.value;
-
         // update to server 
         const restockQuantity = parseInt(number) + parseInt(quantity);
         const updateInventory = { quantity: restockQuantity }
@@ -26,6 +28,7 @@ const InventoryItem = () => {
         })
             .then(res => res.json())
             .then(data => {
+                setUpdate(data)
                 toast.success('restock successfully');
             })
     }
@@ -43,6 +46,7 @@ const InventoryItem = () => {
             })
                 .then(res => res.json())
                 .then(data => {
+                    setUpdate(data)
                     toast.success('Delivered successfully');
                 })
         }

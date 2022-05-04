@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 
-const useInventoryDetails = inventoryId => {
+const useInventoryDetails = (inventoryId, update) => {
 
     const [item, setItem] = useState([]);
 
@@ -8,7 +8,7 @@ const useInventoryDetails = inventoryId => {
         fetch(`http://localhost:5000/inventory/${inventoryId}`)
             .then(res => res.json())
             .then(data => setItem(data))
-    }, [inventoryId])
+    }, [inventoryId, update])
 
     return [item, setItem];
 }
