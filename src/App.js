@@ -13,9 +13,10 @@ import Inventory from './components/pages/Home/Inventory/Inventory';
 import RequireAuth from './components/pages/Login/RequireAuth/RequireAuth';
 import InventoryItem from './components/pages/InventoryItem/InventoryItem';
 import ManageInventory from './components/pages/ManageInventory/ManageInventory/ManageInventory';
+import AddInventory from './components/pages/AddInventory/AddInventory';
+import MyItem from './components/pages/MyItem/MyItem';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import AddInventory from './components/pages/AddInventory/AddInventory';
 
 function App() {
   return (
@@ -43,6 +44,10 @@ function App() {
 
         <Route path='/add-inventory' element={<RequireAuth>
           <AddInventory />
+        </RequireAuth>} />
+
+        <Route path='/myItem' element={<RequireAuth>
+          <MyItem />
         </RequireAuth>} />
 
         <Route path='/blogs' element={<Blogs />} />

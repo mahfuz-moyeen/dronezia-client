@@ -85,6 +85,14 @@ const Menubar = () => {
                                                 </Link>
                                             </li>
                                             <li>
+                                                <Link
+                                                    className="block text-gray-600 lg:hover:bg-indigo-100 lg:p-2.5"
+                                                    to='/myItem'
+                                                >
+                                                    My Item
+                                                </Link>
+                                            </li>
+                                            <li>
                                                 <button
                                                     onClick={() => signOut(auth)}
                                                     className="w-full text-left  cursor-pointer text-gray-600 lg:hover:bg-indigo-100 lg:p-2.5"
