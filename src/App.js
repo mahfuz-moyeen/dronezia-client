@@ -15,6 +15,7 @@ import InventoryItem from './components/pages/InventoryItem/InventoryItem';
 import ManageInventory from './components/pages/ManageInventory/ManageInventory/ManageInventory';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import AddInventory from './components/pages/AddInventory/AddInventory';
 
 function App() {
   return (
@@ -38,6 +39,10 @@ function App() {
 
         <Route path='/manage-inventory' element={<RequireAuth>
           <ManageInventory />
+        </RequireAuth>} />
+
+        <Route path='/add-inventory' element={<RequireAuth>
+          <AddInventory />
         </RequireAuth>} />
 
         <Route path='/blogs' element={<Blogs />} />

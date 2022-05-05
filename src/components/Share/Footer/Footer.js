@@ -18,7 +18,7 @@ const Footer = () => {
                                     alt="droneZia logo"
                                 />
                             </Link>
-                            <p>ACME Industries Ltd.<br />Providing reliable tech since 1992</p>
+                            <p>Dronezia warhouse<br />Providing reliable tech since 2010</p>
 
                         </div>
                         <div>
@@ -45,7 +45,7 @@ const Footer = () => {
                         </div>
                     </div>
                     <div className="footer-center p-5 text-neutral-content">
-                        <p>Copyright © 2022 - All right reserved by ACME Industries Ltd</p>
+                        <p className=' text-gray-400'>Copyright © 2022 - All right reserved by Dronezia warhouse</p>
                     </div>
                 </div>
             </footer>

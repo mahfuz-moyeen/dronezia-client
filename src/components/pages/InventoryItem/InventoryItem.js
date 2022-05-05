@@ -30,9 +30,11 @@ const InventoryItem = () => {
             .then(res => res.json())
             .then(data => {
                 setUpdate(data)
+                event.target.reset();
                 toast.success('restock successfully');
             })
     }
+
     const handleDeliveredSubmit = () => {
         if (parseInt(quantity) > 0) {
             const DeliveredQuantity = parseInt(quantity) - 1;
@@ -191,7 +193,7 @@ const InventoryItem = () => {
                                         </label>
                                     </button> */}
 
-                                    <button type='submite' className="text-white bg-indigo-600 hover:bg-indigo-800 focus:ring-4 focus:outline-none focus:ring-indigo-300 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2">
+                                    <button type='submit' className="text-white bg-indigo-600 hover:bg-indigo-800 focus:ring-4 focus:outline-none focus:ring-indigo-300 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2">
                                     Update
                                 </button>
 

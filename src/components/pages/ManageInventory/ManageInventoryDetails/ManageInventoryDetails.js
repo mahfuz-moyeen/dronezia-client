@@ -36,12 +36,12 @@ const ManageInventoryDetails = ({ item, items, setItems }) => {
             <td className="px-6 py-4 flex justify-around">
 
                 {/* edit or update item  */}
-                <div class="tooltip" data-tip="Edit Item">
+                <div className="tooltip" data-tip="Edit Item">
                     <Link to={`/inventory/${_id}`} className="btn btn-primary font-medium">
                         <PencilIcon className="h-5 w-5" /></Link>
                 </div>
                 {/* delete button  */}
-                <div class="tooltip" data-tip="Delete Item">
+                <div className="tooltip" data-tip="Delete Item">
                     <button >
                         <label htmlFor={_id} className="btn bg-rose-600 border-0 hover:bg-rose-700 font-medium" >
                             <TrashIcon className="h-5 w-5" />
