@@ -9,7 +9,7 @@ const MyItem = () => {
     const [user] = useAuthState(auth);
 
     useEffect(() => {
-        const url = `http://localhost:5000/myItem?email=${user.email}`;
+        const url = `https://dronezia-server.herokuapp.com/myItem?email=${user.email}`;
         fetch(url)
             .then(res => res.json())
             .then(data => setMyItems(data))

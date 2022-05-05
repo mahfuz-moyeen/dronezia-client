@@ -20,7 +20,7 @@ const InventoryItem = () => {
         const restockQuantity = parseInt(number) + parseInt(quantity);
         const updateInventory = { quantity: restockQuantity }
 
-        fetch(`http://localhost:5000/inventory/${inventoryId}`, {
+        fetch(`https://dronezia-server.herokuapp.com/inventory/${inventoryId}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'
@@ -40,7 +40,7 @@ const InventoryItem = () => {
             const DeliveredQuantity = parseInt(quantity) - 1;
             const updateInventory = { quantity: DeliveredQuantity }
             // update to server 
-            fetch(`http://localhost:5000/inventory/${inventoryId}`, {
+            fetch(`https://dronezia-server.herokuapp.com/inventory/${inventoryId}`, {
                 method: 'PUT',
                 headers: {
                     'content-type': 'application/json'
@@ -75,7 +75,7 @@ const InventoryItem = () => {
             quantity: updateQuantity
         }
         // update to server 
-        fetch(`http://localhost:5000/inventory/${inventoryId}`, {
+        fetch(`https://dronezia-server.herokuapp.com/inventory/${inventoryId}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'

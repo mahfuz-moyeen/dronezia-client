@@ -7,7 +7,7 @@ const ManageInventoryDetails = ({ item, items, setItems }) => {
 
 
     const handleDeleteInventory = id => {
-        const url = `http://localhost:5000/inventory/${id}`
+        const url = `https://dronezia-server.herokuapp.com/inventory/${id}`
         fetch(url, {
             method: 'DELETE'
         })

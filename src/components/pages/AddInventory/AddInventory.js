@@ -23,7 +23,7 @@ const AddInventory = () => {
             setPriceError('')
             if (quantity >= 0) {
                 setQuantityError('')
-                fetch('http://localhost:5000/inventory', {
+                fetch('https://dronezia-server.herokuapp.com/inventory', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'

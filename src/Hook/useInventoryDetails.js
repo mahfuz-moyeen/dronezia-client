@@ -5,7 +5,7 @@ const useInventoryDetails = (inventoryId, update) => {
     const [item, setItem] = useState([]);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/inventory/${inventoryId}`)
+        fetch(`https://dronezia-server.herokuapp.com/inventory/${inventoryId}`)
             .then(res => res.json())
             .then(data => setItem(data))
     }, [inventoryId, update])
