@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import useInventory from '../../../../Hook/useInventory';
 import ManageInventoryDetails from '../ManageInventoryDetails/ManageInventoryDetails';
 
@@ -14,6 +15,12 @@ const ManageInventory = () => {
             </div>
 
             <div className='w-11/12 mx-auto mt-10'>
+                <div className='flex justify-center my-5'>
+                <Link
+                    to='/add-inventory'
+                    className='btn btn-info'
+                >Add New Item</Link>
+                </div>
 
                 <div className="relative overflow-x-auto shadow-xl sm:rounded-lg">
                     <table className="w-full text-sm text-left text-gray-500">
@@ -32,7 +39,7 @@ const ManageInventory = () => {
                                     Price
                                 </th>
                                 <th scope="col" className="px-6 py-3 text-center">
-                                   <span className='hidden'> Edit and Delete</span>
+                                    <span className='hidden'> Edit and Delete</span>
                                 </th>
                             </tr>
                         </thead>

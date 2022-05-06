@@ -2,7 +2,7 @@ import { useState } from 'react'
 import CustomLink from '../CustomLink/CustomLink'
 import { MenuAlt1Icon, XIcon } from '@heroicons/react/solid'
 import logo from '../../../image/logo.png'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import auth from '../../../firebase.init'
 import { useAuthState } from 'react-firebase-hooks/auth'
 import { signOut } from 'firebase/auth';
@@ -13,9 +13,55 @@ const Menubar = () => {
     const [profile, setProfile] = useState(false);
     const [user] = useAuthState(auth);
 
+    const { pathname } = useLocation()
+
+    //path check for not found page
+    const pathCheck = () => {
+        if (pathname === '/') {
+            return true;
+        }
+        else if (pathname === '/home') {
+            return true;
+        }
+        else if (pathname === '/inventory') {
+            return true;
+        }
+        else if (pathname === '/manage-inventory') {
+            return true;
+        }
+        else if (pathname === '/add-inventory') {
+            return true;
+        }
+        else if (pathname === '/myItem') {
+            return true;
+        }
+        else if (pathname === '/blogs') {
+            return true;
+        }
+        else if (pathname === '/about') {
+            return true;
+        }
+        else if (pathname === '/myItem') {
+            return true;
+        }
+        else if (pathname === '/sign-in') {
+            return true;
+        }
+        else if (pathname === '/sign-up') {
+            return true;
+        }
+        else if (pathname === '/user-profile') {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+    const isPathTrue = pathCheck();
 
     return (
-        <nav className="bg-white lg:bg-opacity-90 sticky w-full top-0 z-20 shadow-md">
+        <nav className={` ${isPathTrue ? 'block' : 'hidden'} bg-white lg:bg-opacity-90 sticky w-full top-0 z-20 shadow-md`}>
             <div className="items-center px-4 max-w-screen-xl mx-auto lg:flex lg:px-8">
 
                 <div className="flex items-center justify-between py-3 lg:py-4 lg:block">
@@ -62,6 +108,7 @@ const Menubar = () => {
                                                             src={user.photoURL}
                                                             className="w-full h-full rounded-full"
                                                             alt='userPhoto'
+                                                            referrerPolicy="no-referrer"
                                                         />
                                                         :
                                                         <div className="relative w-10 h-10 overflow-hidden bg-gray-100 rounded-full ">

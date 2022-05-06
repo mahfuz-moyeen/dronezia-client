@@ -1,6 +1,7 @@
 import { ExclamationCircleIcon, PencilIcon, TrashIcon } from '@heroicons/react/outline';
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 const ManageInventoryDetails = ({ item, items, setItems }) => {
     const { _id, name, supplier, quantity, price } = item;
@@ -15,6 +16,7 @@ const ManageInventoryDetails = ({ item, items, setItems }) => {
             .then(data => {
                 const rest = items.filter(item => item._id !== id)
                 setItems(rest)
+                toast.error('Delete Items')
             })
     }
 

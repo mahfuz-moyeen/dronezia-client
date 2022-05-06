@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useSendPasswordResetEmail, useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import auth from '../../../../firebase.init';
 import Spinner from '../../../Share/Spinner/Spinner';
 import SocialSignIn from '../SocialSignIn/SocialSignIn';
@@ -38,13 +39,17 @@ const SignIn = () => {
     const handleSignIn = event => {
         event.preventDefault();
         signInWithEmailAndPassword(email, password)
+        setEmail('');
+        setPassword('');
     }
 
     // forget password 
-    const handleForgetPassword = async () => {
+    const handleForgetPassword =  () => {
 
         if (email) {
-            await sendPasswordResetEmail(email);
+            console.log(email);
+             sendPasswordResetEmail(email);
+             toast.success(`Send Reset password mail to ${email}`)
         }
 
     }

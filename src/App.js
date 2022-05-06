@@ -20,7 +20,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   return (
-    <div className="App bg-base-200">
+    <div className="App bg-base-200" >
 
       {/* menubar */}
       <Menubar />
