@@ -19,7 +19,7 @@ const SocialSignIn = () => {
 
     const google = async () => {
         const newUser = await user
-        await fetch('http://localhost:5000/sign', {
+        await fetch('https://dronezia-server.herokuapp.com/sign', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

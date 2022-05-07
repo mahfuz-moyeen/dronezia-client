@@ -44,7 +44,7 @@ const SignUp = () => {
                 setPassError('');
                 await createUserWithEmailAndPassword(email, password);
                 await updateProfile({ displayName: name });
-                await fetch('http://localhost:5000/sign', {
+                await fetch('https://dronezia-server.herokuapp.com/sign', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'

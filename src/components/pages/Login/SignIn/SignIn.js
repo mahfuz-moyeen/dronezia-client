@@ -39,7 +39,7 @@ const SignIn = () => {
     const handleSignIn = async event => {
         event.preventDefault();
         await signInWithEmailAndPassword(email, password)
-        await fetch('http://localhost:5000/sign', {
+        await fetch('https://dronezia-server.herokuapp.com/sign', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -51,8 +51,8 @@ const SignIn = () => {
                 console.log(data);
                 localStorage.setItem('token', data.token)
             })
-         setEmail('');
-         setPassword('');
+        setEmail('');
+        setPassword('');
     }
 
     // forget password 
