@@ -9,53 +9,54 @@ const Footer = () => {
     
         //path check for not found page
 
-    const { pathname } = useLocation();
+    // const { pathname } = useLocation();
 
-    const pathCheck = () => {
-        if (pathname === '/') {
-            return true;
-        }
-        else if (pathname === '/home') {
-            return true;
-        }
-        else if (pathname === '/inventory') {
-            return true;
-        }
-        else if (pathname === '/manage-inventory') {
-            return true;
-        }
-        else if (pathname === '/add-inventory') {
-            return true;
-        }
-        else if (pathname === '/myItem') {
-            return true;
-        }
-        else if (pathname === '/blogs') {
-            return true;
-        }
-        else if (pathname === '/about') {
-            return true;
-        }
-        else if (pathname === '/myItem') {
-            return true;
-        }
-        else if (pathname === '/sign-in') {
-            return true;
-        }
-        else if (pathname === '/sign-up') {
-            return true;
-        }
-        else if (pathname === '/user-profile') {
-            return true;
-        }
-        else {
-            return false;
-        }
-    }
-
-    const isPathTrue = pathCheck();
+    // const pathCheck = () => {
+    //     if (pathname === '/') {
+    //         return true;
+    //     }
+    //     else if (pathname === '/home') {
+    //         return true;
+    //     }
+    //     else if (pathname === '/inventory') {
+    //         return true;
+    //     }
+    //     else if (pathname === '/manage-inventory') {
+    //         return true;
+    //     }
+    //     else if (pathname === '/add-inventory') {
+    //         return true;
+    //     }
+    //     else if (pathname === '/myItem') {
+    //         return true;
+    //     }
+    //     else if (pathname === '/blogs') {
+    //         return true;
+    //     }
+    //     else if (pathname === '/about') {
+    //         return true;
+    //     }
+    //     else if (pathname === '/myItem') {
+    //         return true;
+    //     }
+    //     else if (pathname === '/sign-in') {
+    //         return true;
+    //     }
+    //     else if (pathname === '/sign-up') {
+    //         return true;
+    //     }
+    //     else if (pathname === '/user-profile') {
+    //         return true;
+    //     }
+    //     else {
+    //         return false;
+    //     }
+    // }
+    // const isPathTrue = pathCheck();
+    // in className ${isPathTrue ? 'block' : 'hidden'}
+    
     return (
-        <div style={{ height: '80vh' }} className={`${isPathTrue ? 'block' : 'hidden'} relative`}>
+        <div style={{ height: '80vh' }} className={` relative`}>
             <footer className='bg-neutral w-full absolute bottom-0'>
                 <div className='max-w-screen-xl mx-auto'>
                     <div className="footer md:flex md:justify-around  p-10 bg-neutral text-neutral-content items-center ">

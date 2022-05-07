@@ -44,6 +44,18 @@ const SignUp = () => {
                 setPassError('');
                 await createUserWithEmailAndPassword(email, password);
                 await updateProfile({ displayName: name });
+                await fetch('http://localhost:5000/sign', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify({ email: email })
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data);
+                        localStorage.setItem('token', data.token)
+                    })
 
             }
             else {

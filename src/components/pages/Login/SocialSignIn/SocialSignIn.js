@@ -1,19 +1,39 @@
 import React from 'react';
-import { useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import { useAuthState, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import { useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../../../firebase.init';
 import Spinner from '../../../Share/Spinner/Spinner';
 
 const SocialSignIn = () => {
-    const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
+    const [signInWithGoogle, googleUser, loading, error] = useSignInWithGoogle(auth);
     const navigate = useNavigate();
     const location = useLocation();
+    const [user] = useAuthState(auth);
+
+    const from = location.state?.from?.pathname || "/";
+
 
     if (loading) {
         return <Spinner />
     }
-    if (user) {
-        const from = location.state?.from?.pathname || "/";
+
+    const google = async () => {
+        const newUser = await user
+        await fetch('http://localhost:5000/sign', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify({ email: newUser.email })
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                localStorage.setItem('token', data.token)
+            })
+    }
+    if (googleUser) {
+        google();
         navigate(from, { replace: true });
     }
 

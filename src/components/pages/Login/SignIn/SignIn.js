@@ -36,20 +36,32 @@ const SignIn = () => {
     }
 
     // sign in form 
-    const handleSignIn = event => {
+    const handleSignIn = async event => {
         event.preventDefault();
-        signInWithEmailAndPassword(email, password)
-        setEmail('');
-        setPassword('');
+        await signInWithEmailAndPassword(email, password)
+        await fetch('http://localhost:5000/sign', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify({ email: email })
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                localStorage.setItem('token', data.token)
+            })
+         setEmail('');
+         setPassword('');
     }
 
     // forget password 
-    const handleForgetPassword =  () => {
+    const handleForgetPassword = () => {
 
         if (email) {
             console.log(email);
-             sendPasswordResetEmail(email);
-             toast.success(`Send Reset password mail to ${email}`)
+            sendPasswordResetEmail(email);
+            toast.success(`Send Reset password mail to ${email}`)
         }
 
     }

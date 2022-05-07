@@ -5,19 +5,42 @@ import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import auth from '../../../firebase.init';
 import useInventory from '../../../Hook/useInventory';
-
+import { signOut } from 'firebase/auth';
 
 const MyItem = () => {
     const [myItems, setMyItems] = useState([]);
     const [user] = useAuthState(auth);
     const navigate = useNavigate();
     const [items, setItems] = useInventory();
+    const [error, setError] = useState(false);
 
     useEffect(() => {
-        const url = `https://dronezia-server.herokuapp.com/myItem?email=${user.email}`;
-        fetch(url)
-            .then(res => res.json())
-            .then(data => setMyItems(data))
+        const getMyItem = async () => {
+            const url = `https://dronezia-server.herokuapp.com/myItem?email=${user.email}`;
+            try {
+                await fetch(url, {
+                    headers: {
+                        authorization: `Bearer ${localStorage.getItem('token')}`
+                    }
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        if (!data.message) {
+                            setMyItems(data)
+                        }
+                        else {
+                            signOut(auth);
+                            navigate('/sign-in');
+                        }
+                    })
+            }
+            catch (error) {
+
+            }
+        }
+
+        getMyItem();
+
     }, [items])
 
     const handleDeleteMyItem = id => {
@@ -43,7 +66,9 @@ const MyItem = () => {
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5'>
 
                 {
-                    myItems.map(item => < div key={item._id} className="card card-compact w-10/12 mx-auto bg-base-100 shadow-xl hover:shadow-2xl" >
+                    myItems.map(item => < div
+                        key={item._id}
+                        className="card card-compact w-10/12 mx-auto bg-base-100 shadow-xl hover:shadow-2xl" >
                         <figure><img className='hover:scale-110 transform duration-100 ease-linear' src={item?.img} alt={item?.name} /></figure>
                         <div className="card-body">
                             <div className="card-actions justify-between items-center">
@@ -97,6 +122,7 @@ const MyItem = () => {
                 }
 
             </div>
+
         </div>
     );
 };
