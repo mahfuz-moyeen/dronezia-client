@@ -207,11 +207,11 @@ const Menubar = () => {
                                     Blogs
                                 </CustomLink>
                             </li>
-                            <li className="mt-8 mb-8 lg:mt-0 lg:mb-0">
+                            {/* <li className="mt-8 mb-8 lg:mt-0 lg:mb-0">
                                 <CustomLink to="/about" className="py-3 px-4 text-center text-gray-600 hover:text-indigo-600">
                                     About
                                 </CustomLink>
-                            </li>
+                            </li> */}
                         </ul>
                     </div>
 

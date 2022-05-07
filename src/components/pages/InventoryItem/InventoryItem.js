@@ -1,6 +1,6 @@
 import { PencilIcon } from '@heroicons/react/solid';
 import React, { useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import useInventoryDetails from '../../../Hook/useInventoryDetails';
 
@@ -140,6 +140,13 @@ const InventoryItem = () => {
                 </div>
             </div>
 
+            <div className='flex justify-center my-10'>
+            <Link
+                to='/manage-inventory'
+                className='btn btn-info'
+            >Manage Inventories</Link>
+            </div>
+
             {/* modal  */}
             <input type="checkbox" id={_id} className="modal-toggle" />
             <div className="modal">
@@ -187,24 +194,18 @@ const InventoryItem = () => {
 
                                 <div className="modal-action w-full flex justify-evenly">
 
-                                    {/* <button>
-                                        <label htmlFor={_id} className="text-white bg-indigo-600 hover:bg-indigo-800 focus:ring-4 focus:outline-none focus:ring-indigo-300 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2">
-                                            Update
-                                        </label>
-                                    </button> */}
-
                                     <button type='submit' className="text-white bg-indigo-600 hover:bg-indigo-800 focus:ring-4 focus:outline-none focus:ring-indigo-300 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2">
-                                    Update
-                                </button>
+                                        Update
+                                    </button>
 
-                                <label htmlFor={_id} className="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2">cancel</label>
+                                    <label htmlFor={_id} className="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2">cancel</label>
+                                </div>
+                            </form>
                         </div>
-                    </form>
+                    </div>
+
+
                 </div>
-            </div>
-
-
-        </div>
             </div >
 
 

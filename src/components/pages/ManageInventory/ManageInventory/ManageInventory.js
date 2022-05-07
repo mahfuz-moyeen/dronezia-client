@@ -14,7 +14,7 @@ const ManageInventory = () => {
                 <h1 className='text-2xl my-2'>Total items: {items.length}</h1>
             </div>
 
-            <div className='w-11/12 mx-auto mt-10'>
+            <div className='w-11/12 mx-auto my-10'>
                 <div className='flex justify-center my-5'>
                 <Link
                     to='/add-inventory'

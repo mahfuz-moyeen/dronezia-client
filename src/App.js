@@ -1,5 +1,4 @@
 import { Route, Routes } from 'react-router-dom';
-import './App.css';
 import About from './components/pages/About/About';
 import Blogs from './components/pages/Blogs/Blogs';
 import Home from './components/pages/Home/Home/Home';
@@ -17,6 +16,8 @@ import AddInventory from './components/pages/AddInventory/AddInventory';
 import MyItem from './components/pages/MyItem/MyItem';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import './App.css';
+
 
 function App() {
   return (

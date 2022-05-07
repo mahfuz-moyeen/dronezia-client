@@ -60,7 +60,7 @@ const AddInventory = () => {
             <div className='my-10 text-center font-semibold'>
                 <h1 className='text-4xl my-2'>Add <span className='text-primary'>Item</span></h1>
             </div>
-            <div className="lg:w-6/12 w-10/12 mx-auto bg-white mt-10 rounded-xl p-10 lg:shadow-lg shadow">
+            <div className="lg:w-6/12 w-10/12 my-10 mx-auto bg-white mt-10 rounded-xl p-10 lg:shadow-lg shadow">
                 <form onSubmit={handleAddItem}>
 
                     {/* name  */}
