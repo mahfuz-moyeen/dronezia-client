@@ -38,7 +38,7 @@ const MyItem = () => {
                         }
                     })
 
-                if(error){
+                if(!error){
                     // console.log('2');
                     signOut(auth);
                     navigate('/sign-in');
