@@ -15,7 +15,7 @@ const MyItem = () => {
     const navigate = useNavigate();
     const [items, setItems] = useInventory();
     const [scroll, setScroll] = useState(false)
-    const [error,setError] = useState(false)
+    // const [error, setError] = useState(false)
 
     useEffect(() => {
         const getMyItem = async () => {
@@ -28,29 +28,41 @@ const MyItem = () => {
                 })
                     .then(res => res.json())
                     .then(data => {
+
                         if (!data.message) {
-                            // console.log(1);
                             setMyItems(data)
                         }
                         else {
-                            setError(true);
-                           
+                            // console.log('logout');
+                            // setError(true);
+                            // throw new Error();
+                            signOut(auth);
+                            navigate('/sign-in');
                         }
                     })
-
-                if(!error){
-                    // console.log('2');
-                    signOut(auth);
-                    navigate('/sign-in');
-                }
+                // if (!error) {
+                //     console.log('2');
+                //     // console.log('2');
+                //     // signOut(auth);
+                //     //     // navigate('/sign-in');
+                // }
             }
             catch (error) {
+
             }
         }
 
         getMyItem();
 
+
     }, [items])
+
+    // useEffect(()=>{
+    //     if(!error){
+    //         // window.location.reload();
+    //         setError(true);
+    //     }
+    // },[error])
 
     if (loading) {
         return <Spinner />
@@ -82,6 +94,7 @@ const MyItem = () => {
         document.body.scrollTop = 0;
         document.documentElement.scrollTop = 0;
     }
+
 
     return (
         <div className='container mx-auto'>
@@ -160,6 +173,7 @@ const MyItem = () => {
 
         </div>
     );
+
 };
 
 export default MyItem;
