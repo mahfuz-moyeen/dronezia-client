@@ -56,8 +56,8 @@ const Footer = () => {
     // in className ${isPathTrue ? 'block' : 'hidden'}
     
     return (
-        <div style={{ height: '80vh' }} className={` relative`}>
-            <footer className='bg-neutral w-full absolute bottom-0'>
+        <div >
+            <footer className='bg-neutral w-full '>
                 <div className='max-w-screen-xl mx-auto'>
                     <div className="footer md:flex md:justify-around  p-10 bg-neutral text-neutral-content items-center ">
                         <div>
