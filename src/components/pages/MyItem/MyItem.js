@@ -15,6 +15,7 @@ const MyItem = () => {
     const navigate = useNavigate();
     const [items, setItems] = useInventory();
     const [scroll, setScroll] = useState(false)
+    const [error,setError] = useState(false)
 
     useEffect(() => {
         const getMyItem = async () => {
@@ -28,16 +29,22 @@ const MyItem = () => {
                     .then(res => res.json())
                     .then(data => {
                         if (!data.message) {
+                            console.log(1);
                             setMyItems(data)
                         }
                         else {
-                            signOut(auth);
-                            navigate('/sign-in');
+                            setError(true);
+                           
                         }
                     })
+
+                if(!error){
+                    console.log('2');
+                    signOut(auth);
+                    navigate('/sign-in');
+                }
             }
             catch (error) {
-
             }
         }
 
