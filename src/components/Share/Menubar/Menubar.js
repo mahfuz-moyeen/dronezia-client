@@ -13,6 +13,10 @@ const Menubar = () => {
     const [profile, setProfile] = useState(false);
     const [user] = useAuthState(auth);
 
+    const handleSignOut = () =>{
+        signOut(auth);
+        localStorage.removeItem('token');
+    }
     // const {pathname} = useLocation()
 
     // //path check for not found page
@@ -145,7 +149,7 @@ const Menubar = () => {
                                             </li>
                                             <li>
                                                 <button
-                                                    onClick={() => signOut(auth)}
+                                                    onClick={() => handleSignOut()}
                                                     className="w-full text-left  cursor-pointer text-gray-600 lg:hover:bg-indigo-100 lg:p-2.5"
                                                 >
 

@@ -48,7 +48,6 @@ const SignIn = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data);
                 localStorage.setItem('token', data.token)
             })
         setEmail('');
@@ -59,7 +58,6 @@ const SignIn = () => {
     const handleForgetPassword = () => {
 
         if (email) {
-            console.log(email);
             sendPasswordResetEmail(email);
             toast.success(`Send Reset password mail to ${email}`)
         }

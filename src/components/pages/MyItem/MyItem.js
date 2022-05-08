@@ -7,15 +7,14 @@ import auth from '../../../firebase.init';
 import useInventory from '../../../Hook/useInventory';
 import { signOut } from 'firebase/auth';
 import { ChevronUpIcon } from '@heroicons/react/solid';
+import Spinner from '../../Share/Spinner/Spinner';
 
 const MyItem = () => {
     const [myItems, setMyItems] = useState([]);
-    const [user] = useAuthState(auth);
+    const [user, loading] = useAuthState(auth);
     const navigate = useNavigate();
     const [items, setItems] = useInventory();
-    const [error, setError] = useState(false);
     const [scroll, setScroll] = useState(false)
-
 
     useEffect(() => {
         const getMyItem = async () => {
@@ -45,6 +44,10 @@ const MyItem = () => {
         getMyItem();
 
     }, [items])
+
+    if (loading) {
+        return <Spinner />
+    }
 
     const handleDeleteMyItem = id => {
         const url = `https://dronezia-server.herokuapp.com/inventory/${id}`

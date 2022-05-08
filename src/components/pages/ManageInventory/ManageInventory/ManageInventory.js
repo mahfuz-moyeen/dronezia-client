@@ -1,4 +1,4 @@
-import { ChevronUpIcon } from '@heroicons/react/solid';
+import { ChevronUpIcon, PlusIcon, UserIcon } from '@heroicons/react/solid';
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import useInventory from '../../../../Hook/useInventory';
@@ -30,11 +30,15 @@ const ManageInventory = () => {
             </div>
 
             <div className='w-11/12 mx-auto my-10'>
-                <div className='flex justify-center my-5'>
+                <div className='flex justify-between my-5'>
+                    <Link
+                        to='/myItem'
+                        className='btn btn-outline btn-primary'
+                    >My Item <UserIcon className='w-5 h-5 mx-2'/></Link>
                     <Link
                         to='/add-inventory'
-                        className='btn btn-info'
-                    >Add New Item</Link>
+                        className='btn btn-outline btn-primary'
+                    >Add New Item <PlusIcon className='w-5 h-5 mx-2'/></Link>
                 </div>
 
                 <div className="relative overflow-x-auto shadow-xl sm:rounded-lg">
