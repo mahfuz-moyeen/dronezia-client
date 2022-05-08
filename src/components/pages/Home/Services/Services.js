@@ -56,7 +56,7 @@ const Services = () => {
                 {
                     services.map(service => <div 
                     key={service.id} 
-                    className="card w-96 rounded-none bg-white hover:shadow-xl border-b-2 border-white hover:border-b-2 hover:border-indigo-600">
+                    className="card w-80 mx-auto lg:w-96 rounded-none bg-white hover:shadow-xl border-b-2 border-white hover:border-b-2 hover:border-indigo-600">
                         <div className='card-body'>
                             <div className='flex justify-between items-center gap-4'>
                                 <div>
