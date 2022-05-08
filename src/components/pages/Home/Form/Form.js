@@ -2,6 +2,7 @@ import React from 'react';
 import { toast } from 'react-toastify';
 import './Form.css'
 const Form = () => {
+
     const handleSendMessage = event => {
         event.preventDefault();
         const name = event.target.name.value;
@@ -9,15 +10,25 @@ const Form = () => {
         const email = event.target.email.value;
         const message = event.target.message.value;
 
-        const formData = {
-            name: name,
-            phone: phone,
-            email: email,
-            message: message
-        }
-        toast.success('Send message')
-        console.log(formData);
+        fetch('http://localhost:5000/message', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify({
+                name: name,
+                phone: phone,
+                email: email,
+                message: message
+            })
+        })
+            .then(res => res.json())
+            .then(data => {
+                event.target.reset();
+                toast.success('successfully Send your message')
+            })
     }
+
     return (
         <div className='form-bg'>
             {/* <div>

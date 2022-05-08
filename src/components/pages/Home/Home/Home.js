@@ -1,5 +1,5 @@
 import { PresentationChartBarIcon } from '@heroicons/react/outline';
-import { GlobeIcon, UserGroupIcon, ViewGridIcon } from '@heroicons/react/solid';
+import { ChevronUpIcon, GlobeIcon, UserGroupIcon, ViewGridIcon } from '@heroicons/react/solid';
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Banner from '../Banner/Banner';
@@ -10,12 +10,29 @@ import './Home.css'
 
 const Home = () => {
     const [items, setItems] = useState([]);
+    const [scroll, setScroll] = useState(false)
+
 
     useEffect(() => {
         fetch('https://dronezia-server.herokuapp.com/inventory')
             .then(res => res.json())
             .then(data => setItems(data))
     }, [])
+
+
+    //scroll to  top
+    window.onscroll = function () { scrollFunction() };
+    const scrollFunction = () => {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            setScroll(true)
+        } else {
+            setScroll(false)
+        }
+    }
+    const topFunction = () => {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+    }
 
     return (
         <div>
@@ -85,10 +102,16 @@ const Home = () => {
             </div>
 
             <Services />
-            
+
             <Form />
 
-            {/* <Testimonials/> */}
+            <div className={`${scroll ? 'block' : 'hidden'} w-10/12 lg:w-11/12 mx-auto flex justify-end sticky bottom-3`}>
+                <button
+                    onClick={() => topFunction()}
+                    className='p-1 rounded-lg bg-indigo-600 hover:bg-indigo-700'>
+                    <ChevronUpIcon className='text-white w-5 h-5 lg:w-8 lg:h-8' />
+                </button>
+            </div>
 
         </div>
     );

@@ -1,16 +1,33 @@
-import React from 'react';
+import React, { useState } from 'react';
 import blog1 from '../../../image/blog/blog (4).jpg'
 import blog2 from '../../../image/blog/blog (2).jpg'
 import blog3 from '../../../image/blog/blog (1).jpg'
 import blog4 from '../../../image/blog/blog (3).jpg'
+import { ChevronUpIcon } from '@heroicons/react/solid';
 const Blogs = () => {
+    const [scroll, setScroll] = useState(false)
+
+    //scroll to  top
+    window.onscroll = function () { scrollFunction() };
+    const scrollFunction = () => {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            setScroll(true)
+        } else {
+            setScroll(false)
+        }
+    }
+    const topFunction = () => {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+    }
+
     return (
-        <div>
+        <div className='lg:w-11/12 mx-auto'>
             <h1 className='text-center my-10 text-4xl'>blogs</h1>
 
             <div className='w-11/12 Lg:w/8/12 mx-auto'>
                 <div class="card card-side  flex flex-col lg:flex-row my-5 bg-base-100 shadow-xl">
-                    <div ><img src={blog1}  width={500} alt="Movie" className='h-full w-fit' /></div>
+                    <div ><img src={blog1} width={500} alt="Movie" className='h-full w-fit' /></div>
                     <div class="card-body">
                         <h2 class="card-title">Difference between javascript and nodejs</h2>
                         <p>JavaScript is a language that runs inside a web browser as part of a document loaded by a browser. It treats your pages (HTML gives semantic structure, CSS forms or looks and feel). However, JavaScript should not be limited to just running inside the browser. Now that it is an interpreted language, it needs an interpreter to run it The V8 is the Google Chrome JS engine and the 'node' is a front-end that can be used to run JavaScript scripts outside the browser. Node.js or just Node usually refers to a collection of objects and methods available in your JavaScript code when running on V8 or through a node interpreter. It is a JavaScript library and runtime.</p>
@@ -50,6 +67,13 @@ const Blogs = () => {
                         </p>
                     </div>
                 </div>
+            </div>
+            <div className={`${scroll ? 'block' : 'hidden'} w-10/12 lg:w-full mx-auto flex justify-end sticky bottom-3`}>
+                <button
+                    onClick={() => topFunction()}
+                    className='p-1 rounded-lg bg-indigo-600 hover:bg-indigo-700'>
+                    <ChevronUpIcon className='text-white w-5 h-5 lg:w-8 lg:h-8' />
+                </button>
             </div>
         </div>
     );
