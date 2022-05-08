@@ -29,7 +29,7 @@ const MyItem = () => {
                     .then(res => res.json())
                     .then(data => {
                         if (!data.message) {
-                            console.log(1);
+                            // console.log(1);
                             setMyItems(data)
                         }
                         else {
@@ -38,8 +38,8 @@ const MyItem = () => {
                         }
                     })
 
-                if(!error){
-                    console.log('2');
+                if(error){
+                    // console.log('2');
                     signOut(auth);
                     navigate('/sign-in');
                 }
