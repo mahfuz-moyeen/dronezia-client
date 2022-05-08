@@ -10,7 +10,7 @@ const Form = () => {
         const email = event.target.email.value;
         const message = event.target.message.value;
 
-        fetch('http://localhost:5000/message', {
+        fetch('https://dronezia-server.herokuapp.com/message', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
